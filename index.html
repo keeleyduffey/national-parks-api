@@ -9,12 +9,18 @@
   </head>
   <body>
     <div class="container">
-      <h1>Find A Park</h1>
+      <h1>Find National Parks</h1>
       <form id="js-form">
-        <label for="park-name">Enter Park Name</label>
-        <input type="text" name="park-name" id="js-park-name" placeholder="e.g., Yellowstone" required >
-        <label for="max-results">Enter Park Name</label>
-        <input type="number" name="max-results" id="js-max-results" value="5" required >
+        <div class="input-wrapper">
+          <label for="states-input">Abbreviated States to Search</label>
+          <input type="text" name="states-input" id="js-states-input" placeholder="e.g., CO, GA, NY" required >
+        </div>
+        
+        <div class="input-wrapper">
+          <label for="max-results">Maximum Results To View</label>
+          <input type="number" name="max-results" id="js-max-results" value="10" required >
+        </div>
+        
         <button type="submit">Submit</button>
       </form>
       <section class="results">
