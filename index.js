@@ -46,11 +46,12 @@ function getResults (states, maxResults) {
 
 function createList (responses) {
   console.log(responses);
+
   return responses.map(response => `
     <li>
       <div> Full Name: <a href="${response.url}" target="_blank" >${response.fullName}</a> </div>
       <div> State(s): ${response.states.split(',').join(', ')}</div>
-      <div> Address: ${response.addresses[0].line1} ${response.addresses[0].line2} ${response.addresses[0].stateCode}  ${response.addresses[0].postalCode} </div>
+      <div> Address: ${response.addresses[1] && response.addresses[1].line1} ${response.addresses[1] && response.addresses[1].line2} ${response.addresses[1] && response.addresses[1].stateCode}  ${response.addresses[1] && response.addresses[1].postalCode} </div>
       <div> Description: ${response.description}</div>
 
     </li>`
@@ -59,15 +60,13 @@ function createList (responses) {
 
 
 function displayResults (responseJSON) {
-// console.log(responseJSON);
 
   $('#results-list').empty();
-  if (responseJSON.length === 0) {
-    console.log('HERE err');
+  if (responseJSON.data.length === 0) {
+
     $('#results-list').html(`<ul><li>No results found</li></ul>`);
     $('.results').css('display','block');
   } else {
-    console.log('HERE');
     const resultsList = createList(responseJSON.data).join('<br>');
     $('#results-list').html(`<ul>${resultsList}</ul>`);
     $('.results').css('display','block');
